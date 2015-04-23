@@ -17,6 +17,7 @@
         mediaTrack;
 
     var stats = {
+      timestamp: 0,
       results: [],
       channels: [],
       audio: {},
@@ -76,6 +77,11 @@
 
       for (idx = 0; idx < stats.results.length; idx++) {
         res = stats.results[idx];
+
+        // seems like inactive timestamps are init with unix epoch
+        if (new Date(res.timestamp).getTime() != 0 && stats.timestamp == 0) {
+          stats.timestamp = res.timestamp;
+        }
 
         // Channels - Chrome
         if (res.type == 'googCandidatePair' && res.googActiveConnection == 'true') {
