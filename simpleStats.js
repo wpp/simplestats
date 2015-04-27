@@ -11,7 +11,7 @@
 //  - return the "simple" stats (via callback)
 //
 (function () {
-  function simpleStats(callback, interval) {
+  function simpleStats(callback) {
 
     var pc = this,
         mediaTrack;
