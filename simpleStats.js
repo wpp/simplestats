@@ -117,7 +117,7 @@
         }
 
         // Audio - Firefox
-        if (res.mediaType == 'audio') {
+        if (res.mediaType == 'audio' && res.bytesSent) {
           if (res.isRemote) {
             stats.audio = merge(stats.audio, {
               inputLevel: '?',
@@ -133,7 +133,7 @@
         }
 
         // Video - Chrome
-        if (res.googCodecName == 'VP8') {
+        if (res.googCodecName == 'VP8' && res.bytesSent) {
           stats.video = merge(stats.video, {
             frameHeightInput: res.googFrameHeightInput,
             frameWidthInput: res.googFrameWidthInput,
@@ -149,7 +149,7 @@
         }
 
         // Video - Firefox
-        if (res.mediaType == 'video') {
+        if (res.mediaType == 'video' && res.bytesSent) {
           if (res.isRemote) {
             stats.video = merge(stats.video, {
               rtt: res.mozRtt,
